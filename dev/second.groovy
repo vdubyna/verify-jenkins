@@ -1,5 +1,5 @@
 Map modules = [:]
-modules.first = load './../first.groovy'
+modules.first = load 'first.groovy'
 def test1(){
     echo "second groovy 1"
     modules.first.test1()
