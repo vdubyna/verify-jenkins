@@ -1,5 +1,5 @@
 def test1(modules){
-    echo "second groovy 1"
+    echo "second groovy 1" + params.environment
     modules.first.test1()
 }
 def test2(modules){
