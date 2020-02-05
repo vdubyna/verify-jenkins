@@ -1,5 +1,6 @@
+GroovyShell shell = new GroovyShell()
 def modules = [
-    first: load 'first.groovy'
+    first: shell.parse(new File('first.groovy'))
 ]
 
 def test1(){
