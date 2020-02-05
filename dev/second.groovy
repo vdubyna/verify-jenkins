@@ -1,8 +1,3 @@
-GroovyShell shell = new GroovyShell()
-def modules = [
-    first: shell.parse(new File('first.groovy'))
-]
-
 def test1(){
     echo "second groovy 1"
     modules.first.test1()
