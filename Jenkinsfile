@@ -13,11 +13,8 @@ pipeline {
                 script {
 
                     sh '''
-                    echo "#!/bin/bash" > findNextRelease.sh
-                    echo "/bin/sh `awk -F. '{print \\$1\\".\\"\\$2\\".\\"\\$3+1}' <<< 1.0.1" >> findNextRelease.sh
-                    chmod +x findNextRelease.sh
+                    echo \\"awk -F. '{print \\$1\\".\\"\\$2\\".\\"\\$3+1}' <<< 1.0.1\\"
                     '''
-                    sh './findNextRelease.sh'
                 }
             }
         }
