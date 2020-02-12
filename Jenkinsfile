@@ -19,19 +19,23 @@ pipeline {
 
 
                     lastRelease = "origin/release/1.0.1"
+                    echo lastRelease
 
-
-                    releaseParts = lastRelease.split("\\/")
-                    currentRelease = ​releaseParts[2]
-                    ​currentReleaseParts = ​currentRelease.split("\\.")
-
-                    nextPatch = currentReleaseParts[2] as Integer
-                    nextPatch++
-                    nextMajor = ​currentReleaseParts[0]
-                    nextMinor = ​currentReleaseParts[1]
-                    echo nextMajor+"."​+nextMinor+"."+nextPatch
                 }
             }
         }
     }
+}
+
+def lastRelease(lastRelease) {
+
+    releaseParts = lastRelease.split("\\/")
+    currentRelease = ​releaseParts[2]
+    ​currentReleaseParts = ​currentRelease.split("\\.")
+
+    nextPatch = currentReleaseParts[2] as Integer
+    nextPatch++
+    nextMajor = ​currentReleaseParts[0]
+    nextMinor = ​currentReleaseParts[1]
+    return nextMajor+"."​+nextMinor+"."+nextPatch
 }
