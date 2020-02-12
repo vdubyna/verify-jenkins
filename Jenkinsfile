@@ -23,25 +23,8 @@ pipeline {
                     nextMajor = ​currentReleaseParts[0]
                     nextMinor = ​currentReleaseParts[1]
                     echo nextMajor+"."​+nextMinor+"."+nextPatch
-
-                    echo newRelease(lastRelease)
-
                 }
             }
         }
     }
-}
-
-def newRelease(String lastRelease) {
-
-    releaseParts = lastRelease.split("\\/")
-    currentRelease = ​releaseParts[2]
-    ​currentReleaseParts = ​currentRelease.split("\\.")
-
-    nextPatch = currentReleaseParts[2] as Integer
-    nextPatch++
-    nextMajor = ​currentReleaseParts[0]
-    nextMinor = ​currentReleaseParts[1]
-
-    return  nextMajor+"."​+nextMinor+"."+nextPatch
 }
