@@ -12,18 +12,10 @@ pipeline {
             steps {
                 script {
 
-                    try {
-                        nextRelease = sh(
-                            returnStdout: true,
-                            script: '''
-                            awk -F. '{print $1\\\\\\".\\\\\\"$2\\\\\\".\\\\\\"$3+1}' <<< 1.0.1
-                            '''
-                        )
-                        echo "Next release: " + nextRelease
-
-                    } catch (err) {
-                        echo err
-                    }
+                    sh '''
+                    echo "awk -F. '{print $1"."$2"."$3+1}' <<< 1.0.1" > check.sh
+                    '''
+                    sh 'cat check.sh'
                 }
             }
         }
