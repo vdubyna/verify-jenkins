@@ -11,8 +11,7 @@ pipeline {
         stage('Generate release') {
             steps {
                 script {
-
-                    sh "awk -F. '{print \\$1\\".\\"\\$2\\".\\"\\$3+1}' <<< 1.0.1"
+                    sh 'awk -F. \'{print \\$1\\".\\"\\$2\\".\\"\\$3+1}\' <<< 1.0.1'
                 }
             }
         }
