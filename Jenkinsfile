@@ -13,9 +13,11 @@ pipeline {
                 script {
 
                     lastRelease = sh(
-                    returnStdout: true,
-                    script: 'git branch -r --list origin/release/* | tail -1'
-                    )
+                        script: 'git branch -r --list origin/release/* | tail -1',
+                        returnStdout: true
+                    ).trim()
+
+
 
                     releaseParts = lastRelease.split("\\/")
                     currentRelease = ​releaseParts[2]
