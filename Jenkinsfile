@@ -1,4 +1,3 @@
-Map modules = [:]
 pipeline {
     agent any
     parameters {
@@ -8,16 +7,7 @@ pipeline {
         stage('load libraries') {
             steps {
                 script {
-                    modules.second = load "dev/second.groovy"
-                    modules.first = load "dev/first.groovy"
-                }
-            }
-        }
-        stage('test') {
-            steps {
-                script {
-                    modules.second.test1(modules)
-                    modules.second.test2(modules)
+                    echo "Hello world"
                 }
             }
         }
