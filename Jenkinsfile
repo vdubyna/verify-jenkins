@@ -13,7 +13,7 @@ pipeline {
                 script {
 
                     sh '''
-                    echo \\"1.0.1\\"
+                    echo \\"awk -F. '{}' <<< 1.0.1\\"
                     '''
                 }
             }
