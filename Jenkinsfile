@@ -13,7 +13,11 @@ pipeline {
                 script {
 
                     sh '''
-                    echo "awk -F. '{print $1"."$2"."$3+1}' <<< 1.0.1" > check.sh
+                    echo "awk -F. '{print \$1"."\$2"."\$3+1}' <<< 1.0.1" > check.sh
+                    echo "awk -F. '{print \\$1"."\\$2"."\\$3+1}' <<< 1.0.1" >> check.sh
+                    echo "awk -F. '{print \\\\$1"."\\\\$2"."\\\\$3+1}' <<< 1.0.1" >> check.sh
+                    echo "awk -F. '{print \\\\\\$1"."\\\\\\$2"."\\\\\\$3+1}' <<< 1.0.1" >> check.sh
+                    echo "awk -F. '{print \\$1\\".\\\\"\\\\\\$2\\\\\\\"."\\\\\\$3+1}' <<< 1.0.1" >> check.sh
                     '''
                     sh 'cat check.sh'
                 }
