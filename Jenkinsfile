@@ -26,10 +26,11 @@ def newRelease(String lastRelease) {
     releaseParts = lastRelease.split("\\/")
     currentRelease = ​releaseParts[2]
     ​currentReleaseParts = ​currentRelease.split("\\.")
+
     nextPatch = currentReleaseParts[2] as Integer
     nextPatch++
-    nextPatchString = nextPatch as String
     nextMajor = ​currentReleaseParts[0]
-    nextMinor = ​currentReleaseParts[0]
-    return  nextMajor+"."​+nextMinor+"."+nextPatchString
+    nextMinor = ​currentReleaseParts[1]
+
+    return  nextMajor+"."​+nextMinor+"."+nextPatch
 }
