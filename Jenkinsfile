@@ -28,7 +28,8 @@ def newRelease(String lastRelease) {
     ​currentReleaseParts = ​currentRelease.split("\\.")
     nextPatch = currentReleaseParts[2] as Integer
     nextPatch++
-    nextRelease = ​currentReleaseParts[0] +"."​+currentReleaseParts[1] +"."+nextPatch
+    nextPatchString = nextPatch as String
+    nextRelease = ​currentReleaseParts[0] +"."​+currentReleaseParts[1] +"."+nextPatchString
     ​
     echo ​nextRelease
 }
