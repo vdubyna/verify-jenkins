@@ -12,11 +12,7 @@ pipeline {
             steps {
                 script {
 
-                    lastRelease = sh(
-                        returnStdout: true,
-                        script:'git branch -r --list origin/release/* | tail -1'
-                    )
-
+                    lastRelease = sh 'git branch -r --list origin/release/* | tail -1'
                     newRelease(lastRelease)
 
                 }
