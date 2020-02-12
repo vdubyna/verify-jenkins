@@ -13,7 +13,7 @@ pipeline {
                 script {
 
                     lastRelease = sh 'git branch -r --list origin/release/* | tail -1'
-                    newRelease(lastRelease)
+                    echo newRelease(lastRelease)
 
                 }
             }
@@ -29,7 +29,7 @@ def newRelease(String lastRelease) {
     nextPatch = currentReleaseParts[2] as Integer
     nextPatch++
     nextPatchString = nextPatch as String
-    nextRelease = ​currentReleaseParts[0] +"."​+currentReleaseParts[1] +"."+nextPatchString
-    ​
-    echo ​nextRelease
+    nextMajor = ​currentReleaseParts[0]
+    nextMinor = ​currentReleaseParts[0]
+    return  nextMajor+"."​+nextMinor+"."+nextPatchString
 }
