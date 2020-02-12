@@ -11,7 +11,13 @@ pipeline {
         stage('Generate release') {
             steps {
                 script {
-                    sh 'awk -F. \'{print \\$1\\".\\"\\$2\\".\\"\\$3+1}\' <<< 1.0.1'
+
+                    sh '''
+                    echo "#!/bin/bash" > findNextRelease.sh
+                    echo "/bin/sh `awk -F. '{print \\$1\\".\\"\\$2\\".\\"\\$3+1}' <<< 1.0.1" >> findNextRelease.sh
+                    chmod +x findNextRelease.sh
+                    '''
+                    sh './findNextRelease.sh'
                 }
             }
         }
