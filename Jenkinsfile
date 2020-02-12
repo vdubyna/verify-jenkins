@@ -12,19 +12,14 @@ pipeline {
             steps {
                 script {
 
-                    lastRelease = sh(
+                    def lastRelease = sh(
                         returnStdout: true,
                         script:'git branch -r --list origin/release/* | tail -1'
                     )
-                    echo lastRelease.split("\\/")[0]
-                    echo lastRelease.split("\\/")[1]
-                    echo lastRelease.split("\\/")[2]
-
-                    echo lastRelease.split("\\.")[0]
-                    echo lastRelease.split("\\.")[1]
-                    echo lastRelease.split("\\.")[2]
-                    newRelease = lastRelease.split("\\.")[2]+1
-                    echo lastRelease.split("\\.")[0] + "." + lastRelease.split("\\.")[1] + "." + newRelease
+                    def currentRelease = lastRelease.split("\\/")[2]
+                    def releaseParts = currentRelease.split("\\.")
+                    def nextReleaseMinor = releaseParts[2] as Integer
+                    echo releaseParts[0] + "." + releaseParts[1] + "." + newReleaseMinor++
 
                 }
             }
