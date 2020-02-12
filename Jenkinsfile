@@ -12,9 +12,16 @@ pipeline {
             steps {
                 script {
 
-                    sh '''
-                    awk -F. \\"{print \\$1\\\\".\\\\"\\$2\\\\".\\\\"\\$3+1}\\" <<< 1.0.1
-                    '''
+                    lastRelease = sh(
+                        returnStdout: true,
+                        script:'git branch -r --list origin/release/* --format="%(refname:lstrip=-1)" | tail -1'
+                    )
+                    echo lastRelease.split("\\.")[0]
+                    echo lastRelease.split("\\.")[1]
+                    echo lastRelease.split("\\.")[2]
+                    newRelease = lastRelease.split("\\.")[2]+1
+                    echo lastRelease.split("\\.")[0] + "." + lastRelease.split("\\.")[1] + "." + newRelease
+
                 }
             }
         }
